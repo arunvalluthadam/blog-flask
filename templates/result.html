@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="searchwindow">
+	<h1>Search result</h1><br>
+
+	{% for record in records %}
+    	<h2>{{ record[1] }}</h2> <hr> <h4>{{ record[2] }}</h4><br>
+	{% endfor %}
+	<p><div id="backbtn"><a href="{{ url_for('show_entries') }}">Back</a></div></p>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,48 @@
+<!doctype html>
+<title>My Blog</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/blogStyle.css') }}">
+
+<div class="page">
+	<div id="header">
+        <div id="search">
+        <form action="/search" method="post">
+            <div id="serspc"><input type=text placeholder="Search By Title" name=search value="{{ request.form.search }}" style="height: 20px; width: 200px"></div>
+            <input type=submit id="serbtn" value="Search">
+        </form>
+        </div>
+
+        <div id="home"><a href="/"><h1>Home</h1></a></div>
+        <div class="metanav">
+        {% if not session.logged_in %}
+            <div id="login"><a href="{{ url_for('login') }}">Log In</a></div>
+        {% else %}
+            <div id="logout"><a href="{{ url_for('logout') }}">Log Out</a></div>
+        {% endif %}
+        </div>
+    </div>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.8.0.min.js') }}"></script>
+
+    <div id="banner">
+        <img src="{{ url_for('static', filename="img/bluekeyboard.jpg") }}" width="2100">
+    </div>
+
+<!--     <div id="slider" class="banner">
+        <ul class="slides">
+            <li class="slide"><img src="{{ url_for('static', filename="img/redbrick.jpg") }}" width="2100"></li>
+            <li class="slide"><img src="{{ url_for('static', filename="img/bluebrick.jpg") }}" width="2100"></li>
+            <li class="slide"><img src="{{ url_for('static', filename="img/bluekeyboard.jpg") }}" width="2100"></li>
+            <li class="slide"><img src="{{ url_for('static', filename="img/greenindustry.jpg") }}" width="2100"></li>
+            <li class="slide"><img src="{{ url_for('static', filename="img/orangebubbles.jpg") }}" width="2100"></li>
+        </ul>
+    </div> -->
+
+    <div id="content">    
+    {% block body %}{% endblock %}
+    </div>
+    <div id="footer">
+    	Copyright &copy; 2014 SimplanS
+    </div>
+</div>

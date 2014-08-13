@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="blogtext">
+	<h1>Blog Writing</h1>
+	{% if session.logged_in %}
+	<form action="{{ url_for('add_entry') }}" method="post">
+		<p><input name="name" type="text" placeholder="Title of the Post" style="width: 640px; color: #0B4008; font-size: 20px;"></p>
+		<br>
+		<p><textarea rows="20" cols="70" name="place" type="text" placeholder="Paragraph You need to Write" style="color: #0B4008; font-size: 15px;"></textarea></p>
+   	<input id="subbtn" type="submit" value="Enter Post">
+	</form>
+	{% endif %}
+</div>
+
+
+
+
+<div id="posted">
+	{% for entry in entries %}
+    	<p><div id="sephed">{{ entry.name }}</div> <br><br>
+      <div id="separa">{{ entry.place }}</div>
+    	{% if session.logged_in %}
+       		<div id="delbtn">
+       			<a href="{{ url_for('delete', entry_id = entry.id) }}">Delete</a>
+       		</div>
+    	{% endif %}
+    	</p>
+		{% else %}
+    	<li><em>Empty</em>
+	{% endfor %}
+</div>
+{% endblock %}
