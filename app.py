@@ -1,5 +1,6 @@
 from flask import Flask, request, session, g, url_for, abort, render_template, flash, redirect
 import sqlite3
+import psycopg2
 
 app = Flask(__name__)
 
