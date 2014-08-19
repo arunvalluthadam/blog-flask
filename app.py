@@ -14,13 +14,7 @@ def get_db():   # 2
     if not hasattr(g, 'sqlite_db'):
         g.sqlite_db = connect_db()
     return g.sqlite_db
-
-@app.before_request
-def before_request():
-    db = sqlite3.connect('dataPost.db')
-    cur = db.cursor()
-    cur.execute("CREATE TABLE if not EXISTS blogdata (id INTEGER PRIMARY KEY, name TEXT, place TEXT)")
-
+    
 
 @app.route('/delete/<int:entry_id>')
 def delete(entry_id):
