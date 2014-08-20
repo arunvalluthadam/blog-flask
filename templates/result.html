@@ -7,7 +7,7 @@
 	{% for record in records %}
     	<h2>{{ record[1] }}</h2> <hr> <h4>{{ record[2] }}</h4><br>
 	{% endfor %}
-	<p><div id="backbtn"><a href="{{ url_for('show_entries') }}">Back</a></div></p>
+	<p><div id="backbtn"><a class="btn btn-info" href="{{ url_for('show_entries') }}">Back</a></div></p><br><br>
 </div>
 
 {% endblock %}
