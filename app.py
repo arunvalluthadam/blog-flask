@@ -28,6 +28,9 @@ def delete(entry_id):
     flash('The entry was deleted')
     return redirect(url_for('show_entries'))
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/')    # 5
 def show_entries():
@@ -45,6 +48,10 @@ def add_entry():
     db.commit()
     flash('New entry was sucessfully posted')
     return redirect(url_for('show_entries'))
+
+@app.route('/add')
+def add():
+    return render_template('add.html')
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
@@ -76,7 +83,6 @@ def logout():
     session.pop('logged_in', None)
     flash('You where logged out')
     return redirect(url_for('show_entries'))
-
 
 @app.teardown_appcontext   # 3
 def close_db(error):

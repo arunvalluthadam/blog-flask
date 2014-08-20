@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="blogtext">
+	<div id="introtext"><h1>Blog Writing</h1></div>
+	{% if session.logged_in %}
+		<form action="{{ url_for('add_entry') }}" method="post">
+			<p><input name="name" type="text" placeholder="Title of the Post" style="width: 640px; color: #0B4008; font-size: 20px;"></p>
+			<br>
+			<p><textarea rows="20" cols="50" name="place" type="text" placeholder="Paragraph You need to Write" style="color: #0B4008; width: 640px; font-size: 15px;"></textarea></p>
+	   		<input id="subbtn" class="btn btn-inverse" type="submit" value="Enter Post">
+		</form>
+	{% else %}
+		<br><br><h2>You needs to login First</h2>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>	
+
+	{% endif %}
+
+</div>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 {% block body %}
 <div id="searchwindow">
-	<h1>Search result</h1><br>
+	<div id="searchtitle"><h1>Search result</h1></div><br>
 
 	{% for record in records %}
     	<h2>{{ record[1] }}</h2> <hr> <h4>{{ record[2] }}</h4><br>
